@@ -1,4 +1,4 @@
-export class School {
+class School {
     directions: any = [];
 
     addDirection(direction: string): void {
@@ -6,7 +6,76 @@ export class School {
     }
 }
 
-export class Student {
+class Direction {
+    levels: any = [];
+
+    private _name: string;
+
+    get name(): string {
+        return this._name;
+    }
+
+    constructor(name: string) {
+        this._name = name;
+    }
+
+    addLevel(level: number | string): void {
+        this.levels.push(level);
+    }
+}
+
+class Level {
+    groups: any = [];
+
+    private _name: string;
+    private _program: string;
+
+    constructor(name: string, program: string) {
+        this._name = name;
+        this._program = program;
+    }
+
+    get name(): string {
+        return this._name;
+    }
+
+    get program(): string {
+        return this._program;
+    }
+
+    addGroup(group: string): void {
+        this.groups.push(group);
+    }
+}
+
+class Group {
+    private _students: any = [];
+    directionName: string;
+    levelName: string;
+
+    get students(): any {
+        return this._students;
+    }
+
+    constructor(directionName: string, levelName: string) {
+        this.directionName = directionName;
+        this.levelName = levelName;
+    }
+
+    addStudent(student: any): void {
+        this._students.push(student);
+    }
+
+    showPerformance(): any {
+        const sortedStudents: any = this.students.toSorted(
+            (a: any, b: any) => b.getPerformanceRating() - a.getPerformanceRating()
+        );
+
+        return sortedStudents;
+    }
+}
+
+class Student {
     grades: any = {};
     attendance: any = [];
     firstName: string;
@@ -53,74 +122,5 @@ export class Student {
             100;
 
         return (averageGrade + attendancePercentage) / 2;
-    }
-}
-
-export class Level {
-    groups: any = [];
-
-    private _name: string;
-    private _program: string;
-
-    constructor(name: string, program: string) {
-        this._name = name;
-        this._program = program;
-    }
-
-    get name(): string {
-        return this._name;
-    }
-
-    get program(): string {
-        return this._program;
-    }
-
-    addGroup(group: string): void {
-        this.groups.push(group);
-    }
-}
-
-export class Group {
-    private _students: any = [];
-    directionName: string;
-    levelName: string;
-
-    get students(): any {
-        return this._students;
-    }
-
-    constructor(directionName: string, levelName: string) {
-        this.directionName = directionName;
-        this.levelName = levelName;
-    }
-
-    addStudent(student: string): void {
-        this._students.push(student);
-    }
-
-    showPerformance(): any {
-        const sortedStudents: any = this.students.toSorted(
-            (a: any, b: any) => b.getPerformanceRating() - a.getPerformanceRating()
-        );
-
-        return sortedStudents;
-    }
-}
-
-export class Direction {
-    levels: any = [];
-
-    private _name: string;
-
-    get name() {
-        return this._name;
-    }
-
-    constructor(name: string) {
-        this._name = name;
-    }
-
-    addLevel(level: number | string) {
-        this.levels.push(level);
     }
 }
