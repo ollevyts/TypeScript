@@ -124,6 +124,14 @@ class Group {
         this._status = status;
     }
 
+    get direction(): string {
+        return this.directionName;
+    }
+
+    get level(): string {
+        return this.levelName;
+    }
+
     get area(): string {
         return this._area;
     }
@@ -182,11 +190,11 @@ class Student {
         return new Date().getFullYear() - this._birthYear;
     }
 
-    setGrade(lesson: string, grade: number): void {
+    set grade({ lesson, grade }: { lesson: string; grade: number }) {
         this._grades[lesson] = grade;
     }
 
-    setVisit(lesson: string, present: boolean): void {
+    set visit({ lesson, present }: { lesson: string; present: boolean }) {
         this._visits[lesson] = present;
     }
 
