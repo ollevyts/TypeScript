@@ -10,6 +10,10 @@ abstract class Shape {
     public abstract calculateArea(): number;
 }
 
+interface IPrint {
+    print(): void;
+}
+
 class Circle extends Shape {
     private radius: number;
 
@@ -23,7 +27,7 @@ class Circle extends Shape {
     }
 }
 
-class Rectangle extends Shape {
+class Rectangle extends Shape implements IPrint {
     private width: number;
     private height: number;
 
@@ -42,7 +46,7 @@ class Rectangle extends Shape {
     }
 }
 
-class Square extends Shape {
+class Square extends Shape implements IPrint {
     private side: number;
 
     constructor(name: string, color: string, side: number) {
