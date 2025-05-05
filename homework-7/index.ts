@@ -87,7 +87,6 @@ class ConfirmationRequiredTodoNote extends TodoNote {
 class TodoList {
     private notes: TodoNote[] = [];
 
-    // Додавання нового нотатка
     addNote(note: TodoNote): void {
         this.notes.push(note);
     }
@@ -155,7 +154,7 @@ class TodoList {
                 } else {
                     return b.status.localeCompare(a.status);
                 }
-            } else { // SortBy.CREATION_DATE
+            } else {
                 if (direction === SortDirection.ASC) {
                     return a.createdAt.getTime() - b.createdAt.getTime();
                 } else {
